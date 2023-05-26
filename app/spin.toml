@@ -1,0 +1,17 @@
+spin_manifest_version = "1"
+authors = ["Thorsten Hans <thorsten.hans@gmail.com>"]
+description = ""
+name = "cosmos-showcase"
+trigger = { type = "http", base = "/" }
+version = "0.1.0"
+
+[[component]]
+id = "cosmos-showcase"
+source = "target/wasm32-wasi/release/cosmos_showcase.wasm"
+allowed_http_hosts = []
+key_value_stores = ["default"]
+[component.trigger]
+route = "/..."
+[component.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
